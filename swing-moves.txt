@@ -1,0 +1,356 @@
+# In case the syntax is not self-explanatory for you, see the bottom of this
+# file for an informal grammar.
+#
+# General guidelines
+# ==================
+#
+# We don't try to document all physically possible transitions for a given
+# move, but instead focus on the ones that are most natural/simple/fun.
+#
+# HOWEVER we do include some that may be slightly physically awkward, since
+# these can give you more ways to transition *between* moves, helping you to be
+# more creative with your move sequences.
+#
+# Naming conventions
+# ==================
+#
+# X Y
+# X (Y)
+#    Y does not substantially change X's shape
+# X w/ Y
+#    Y only changes X's small-scale shape, not large-scale
+# X, Y
+#    Y substantially changes X's large-scale shape
+# turn
+#    hands connected, head goes under other's arm
+# spin
+#    hands not connected, head does not go under any arms
+#
+# Shortcomings
+# ============
+#
+# We currently only support moves that don't result in a net body weight change
+# e.g. onto the other foot.
+
+- Jump: 0 weight:0.25
+  */* =
+  - jump: 2 filler
+    inherit
+  - stop: 2 filler
+    inherit
+
+- Step: 0 weight:0.25
+  */* =
+  - step: 2 filler
+    inherit
+
+- Lindy basic: 0 basic weight:0.25
+  open/*, closed/* =
+  - , 6-count: 6 inherit
+    inherit
+  - , 8-count: 8 inherit
+    inherit
+
+- Send out: 6 subweight:0.5
+  closed/1H-I, closed/2H - open/1H-O, open/1H-I, open/2H
+  - w/ inside spin: 8
+    inherit
+  - w/ bring in "yo-yo": 8
+    inherit
+
+- Bring in: 6 subweight:0.5
+  open/1H-O, open/1H-I, open/2H - closed/1H-I, closed/2H
+  - w/ jump slide: 8
+    inherit
+  - w/ knee slap: 8
+    open/1H-O, open/1H-I, open/2H - closed/1H-I
+  - w/ tap-slide break: 8
+    open/1H-O, open/1H-I, open/2H - closed/2H
+  # main variation has follow outside semispin
+  - , inside semispin: 6
+    open/1H-O, open/1X-R - closed/1H-I, closed/2H, closed/2T-B
+    - w/ jump slide: 8
+      inherit
+    - w/ knee slap: 8
+      open/1H-O, open/1X-R - closed/1H-I
+  # TODO: any way to dedupe these variations?
+
+- Bust out: 0
+  closed/2H, closed/1H-I -
+  - , lead "promenot": 8
+    inherit
+  - , follow "promenot": 8
+    inherit
+    - w/ spin: 8
+      inherit
+    - w/ side pass: 8
+      closed/2H - open/1H-O
+  - , dual "butterfly": 8
+    inherit
+    - w/ jump break: 8
+      inherit
+  - (fast), follow: 6
+    inherit
+
+- Semi-circle: 6
+  # a.k.a. 6-count "circle"
+  closed/2H, closed/1H-I -
+  - w/ promenade: 8
+    inherit
+  - , reverse: 6
+    inherit
+    - w/ promenade: 8
+      inherit
+  - w/ outside turn: 8
+    closed/2H - open/1H-O
+  - forward + reverse "fake out": 8
+    closed/1H-I, closed/2H, open/1H-O - closed/1H-I, closed/2H
+
+- Inside turn: 6
+  open/1H-O, closed/2H -
+  - x2: 8
+    inherit
+  - into cuddle/R: 6
+    open/1H-O, open/2H - closed/2Q-R
+  - from cuddle/L: 6
+    closed/2Q-L - open/1H-I, open/2H
+  - into sweetheart/L: 6
+    open/2X-L - closed/2T-B
+  - from sweetheart/R: 6
+    closed/2T-B - open/2X-R
+
+- Outside turn: 6
+  open/1H-O, closed/2H -
+  - x2: 8
+    inherit
+  - from cuddle/R: 6
+    closed/2Q-R - open/1H-O, open/2H
+  - into cuddle/L: 6
+    open/1H-I, open/2H - closed/2Q-L
+  - from sweetheart/L: 6
+    closed/2T-B - open/2X-L
+  - into sweetheart/R: 6
+    open/2X-R - closed/2T-B
+
+- Side pass, follow R: 6
+  open/1H-O, open/1X-R -
+  - w/ belt spin: 6
+    open/1H-O, open/1X-R - open/1H-O
+  - w/ promenade: 8
+    inherit
+  - w/ outside spin: 8
+    inherit
+  - w/ gather: 6
+    open/1H-O - closed/2H
+    - redirect: 8
+      inherit
+  - w/ spin redirect: 8
+    inherit
+  - w/ turn redirect: 8
+    inherit
+  - w/ Frankie shuffle: 8
+    # a.k.a. horsey steps
+    open/1H-O, open/1X-R, open/1X-L, open/1H-I, open/2H =
+    open/1H-O, open/2H - closed/2H
+  - into sweetheart: 6
+    open/1H-O, open/1X-R - open/2T-F
+
+- Side pass, follow L: 6
+  open/1H-O, open/1X-R -
+  - w/ promenade: 8
+    inherit
+  - w/ outside spin: 8
+    inherit
+  - w/ gather: 8
+    open/1H-O - closed/2H
+
+- Tuck turn: 6
+  closed/2H - open/1H-O, open/1X-R
+  - x2: 8
+    inherit
+  - from cuddle: 6
+    closed/2Q-R - open/1H-O, open/2H
+  - from open: 6
+    open/1H-O, open/1X-R -
+    - w/ gather: 6
+      open/1H-O, open/1X-R - closed/2H
+
+- Tuck spin: 6
+  closed/1H-I - open/1H-O, open/1X-R
+  - x2: 8
+    inherit
+  - from sweetheart: 6
+    closed/2T-B - open/1X-R
+
+- American/Stop turn: 6
+  # similar to tuck turn from open, but pull on rock step not push
+  open/1H-O, open/1X-R, open/1X-L, open/1H-I =
+
+- Down the line: 0
+  - Frisbee: 6
+    open/1H-O, open/1X-R - open/1H-O
+  - Concertina: 6
+    # some sources call this a "travelling tuck turn from open"
+    open/1H-O - closed/2H
+    open/1X-L - closed/2T-B
+    - w/ spin: 8
+      inherit
+
+- Swing out: 8 weight:4 # classic move
+  closed/1H-I, closed/2H, open/1H-O - open/1H-O
+  - w/ outside turn: 8
+    inherit
+  - w/ outside spin: 8
+    inherit
+    - w/ Tx Tommy: 8
+      closed/1H-I, closed/2H, open/1H-O - open/1H-O, open/1X-R
+  - w/ inside turn: 8
+    inherit
+  - , reverse: 8 weight:0.5 # unusual move, challenging for follows
+    inherit
+
+- Circle: 8 weight:4 # classic move
+  closed/1H-I, closed/2H, open/1H-O - closed/1H-I, closed/2H
+  - , reverse: 8 weight:0.5 # unusual move, challenging for follows
+    inherit
+
+- Frankie 6s: 0 # dummy move for grouping purposes
+  - entry: 6
+    open/2X-L, open/1X-R - open/2T-F
+  - exit, early: 6
+    open/2T-F - open/1X-L
+  - main: 6
+    open/2T-F - closed/2T-B
+    # TODO: closed/2T-B is not exactly correct
+    # also we want more ways of exiting this than tuck spin
+  - exit, tuck spin: 6
+    closed/2T-B - open/1H-O, open/1X-R
+    - x2: 8
+      inherit
+
+- Minne dip: 8
+  open/1H-O, open/1X-R - open/1H-O
+  # normally the 6-count variation is considered the main variation
+  # but it's easier for us to do it like this due to prefix naming
+  - (omit next rock-step): 6
+    inherit
+
+- Side pass, cross turn: 6
+  # TODO: this is basically a crosshand variant of a barrel roll; can fold this into that later
+  open/2X-R - open/2X-L
+  open/2X-L - open/2X-R
+
+- Sugar push: 6
+  open/2H, open/2X-R, open/2X-L =
+
+- Arm drag: 4 ending
+  closed/2H =
+
+- Eagle-slide break: 8 ending
+  closed/1H-I, closed/2H -
+  - (semi): 8 ending
+    inherit
+
+- Tap-slide break: 8 ending
+  closed/1H-I, closed/2H -
+
+- Side dip: 8 ending
+  open/2H, open/1H-I - special/XX
+  - and back up: 12 weight:0.25
+    open/2H, open/1H-I - open/1H-I
+
+- Dip: 8 ending
+  closed/2H - special/XX
+  - and back up: 12 weight:0.25
+    closed/2H - closed/2H, closed/1H-I
+
+- Charleston basic: 8 basic
+  open/*, closed/*, tandem/* =
+  # TODO: other charleston moves
+
+# TODO more moves
+#
+#- Inside+outside turn+return
+#- Pop turn
+#- Barrel turn
+#- Sailor turn & kicks
+
+# Syntax grammar
+# ==============
+#
+# <FILE>:
+#   <nlist of moves>
+#
+# <nlist of Xs>: newline-separated list of X
+# <clist of Xs>: comma-separated list of X
+# <slist of Xs>: space-separated list of X
+#
+# <move>:
+#   - <move name>: <count> <slist of tags>
+#     <nlist of possible transitions>
+#     <nlist of variant moves>
+#     # parent move name is prefixed onto variant move name
+#
+# <count>: integer, e.g. 6 or 8
+# <tag>:
+#   <key>[:<value>]
+#   # if <value> is omitted then it is taken to be True
+# <key>: string
+# <value>: python ast.literal_eval() expression
+#   # see below section for possible key-value pairs and what they mean
+#
+# <transition>: ANY OF
+#   inherit
+#   # indicates all transitions of the parent transition
+#   # only valid for variant transitions
+#
+#   <clist of from-positions> - [<clist of to-positions>]
+#   # "-" indicates the cartesian product of the two list operands
+#   #  - i.e. any from-position can transition to any to-position
+#   # if second operand is omitted, implicitly same as first operand
+#
+#   <clist of from-positions> = [<clist of to-positions>]
+#   # "=" indicates the zip of the two list operands
+#   #  - i.e. from-position #i can transition to to-position #i, for all i
+#   # if second operand is omitted, implicitly same as first operand
+#
+# <position>:
+#   <stance OR "*">/<connection OR "*">
+#   # possible <stance> and <connection> are taken from positions.yml
+#   # "*" indicates all possible <stance>, or all possible <connection>
+#   # that is valid for each selected <stance>
+#
+# Tags
+# ====
+#
+# inherit
+#   Inherit tags from the parent move
+#
+# basic
+# filler
+#   These moves are filtered out by default, with flags to switch the filtering
+#   off. For example, "basic" and "filler" are filtered out of the move table
+#   and "basic" is filtered out of generated move sequences.
+#
+# ending
+#   These moves can only appear in ending position, unless a flag is given to
+#   allow them in other positions.
+#
+# weight:<integer>
+# subweight:<integer>
+#   Relative weight for the probability of selecting moves, default 1.0.
+#   "weight" competes with other sibling moves/variants (and the parent
+#   "subweight", if there is a parent), whereas "subweight" competes with
+#   child moves/variants. For example, if the candidates are [A, B, B/C] then
+#   the default probabilities are [1/2, 1/4, 1/4]. But if B has weight:3
+#   subweight:2 then the probabilities would instead be:
+#
+#   A   =   1/4, 4 being the total weight of A, B
+#   B   =   3/4, 4 being the total weight of A, B
+#         * 2/3, 3 being the total (subweight of B, weight of B/C)
+#       =   1/2
+#   B/C =   3/4, 4 being the total weight of A, B
+#         * 1/3, 3 being the total (subweight of B, weight of B/C)
+#       =   1/4
+#
+#   i.e. [1/4, 1/2, 1/4]

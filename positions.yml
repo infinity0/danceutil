@@ -1,0 +1,70 @@
+connections:
+  1H-I: inside arms/hands connected
+  1H-O: outside hands connected
+  1X-R: right hands connected
+  1X-L: left hands connected
+  2H: inside arms/hands connected, outside hands connected
+  2T-B: like hands connected, lead behind - "sweetheart"
+  2T-F: like hands connected, lead in front
+  2X-R: like hands connected front, right above left
+  2X-L: like hands connected front, left above right
+  2XB-R: like hands connected back, right above left
+  2XB-L: like hands connected back, left above right
+  2Q-R: follow arms crossed, right above left - "cuddle"
+  2Q-L: follow arms crossed, left above right
+  2QL-R: lead arms crossed, right above left
+  2QL-L: lead arms crossed, left above right
+  XX: stand-in for special move-specific position e.g. dips and other endings
+  # TODO: back-to-back connections like in sailor kicks
+  # TODO: weird positions like in the middle of Frankie 6's
+  #       which is like 1X-L plus lead's right hand on follow's back
+  #       or 2T-B minus follow's right hand. currently we are writing
+  #       that as 2T-B but this is not strictly accurate.
+
+stances:
+  closed:
+    description: |
+      Stances where the primary communication is via inside arms
+      i.e. lead right arm, follow left arm. For example:
+
+      - close embrace - torsos connected
+        lead arm on follow back
+      - semi-closed embrace - facing at an angle, like a half-open book
+        default "closed position" for Lindy Hop
+      - open embrace - torsos not connected
+        lead hand on follow back, rather than entire arm on back
+      - inside-side - side-by-side, lead on left
+        default "closed position" for Charleston
+    default connection: 2H
+    valid connections: [1H-I, 2H, 2T-B, 2T-F, 2X-R, 2X-L, 2XB-R, 2XB-L, 2Q-R, 2Q-L, 2QL-R, 2QL-L]
+
+  tandem:
+    description: |
+      Stances where lead is directly behind/front follow.
+      Follow's footwork matches lead's, instead of mirroring.
+    default connection: 2T-B
+    valid connections: [1X-R, 1X-L, 2T-B, 2T-F, 2Q-R, 2Q-L, 2QL-R, 2QL-L]
+
+  open:
+    description: |
+      Stances where the primary communication is via outside hands
+
+      - open position
+      - outside-side - side-by-side, lead on right
+    default connection: 1H-O
+    valid connections: [1H-O, 1X-R, 1X-L, 1H-I, 2H, 2T-B, 2T-F, 2X-R, 2X-L, 2XB-R, 2XB-L]
+
+  special:
+    description: |
+      Special unique stances e.g. during ending moves
+    default connection: XX
+    valid connections: [XX]
+
+  # Note: direct body move to shift between
+  # - open/2X-[RL], closed/2X-[RL] inc variants
+  # - tandem, inside-side/2T-[BF] (lead on left)
+  # - tandem, outside-side/2T-[BF] (lead on right)
+
+feet:
+  offset: feet in between each other
+  aligned: feet directly facing each other
