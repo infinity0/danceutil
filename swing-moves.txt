@@ -31,6 +31,13 @@
 #
 # We currently only support moves that don't result in a net body weight change
 # e.g. onto the other foot.
+#
+# Some of the names are a bit non-standard - e.g. "Semi-circle w/ promenade" is
+# normally just called "promenade" in the London scene. The purpose here is to
+# fit everything into a systematic tree of related moves. Of course this is not
+# 100% accurate because some moves can be seen as inheriting from two parents,
+# but having this inaccurate yet simple system helps us to do some nice things
+# such as not repeatedly choosing two related moves (--deny-same-family).
 
 - Jump: 0 weight:0.25
   */* =
