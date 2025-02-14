@@ -281,6 +281,20 @@
 #- Pop turn
 #- Barrel turn
 #- Sailor turn & kicks
+#
+#- Charleston swinging kicks
+#- Charleston kick-throughs
+#- Charleston corridors
+#- Charleston hover kicks
+#- Charleston crossover kicks
+#- Charleston grind walks "Suzy Q"
+#- Charleston tandem
+#  - entry/exit from/to open/1X-R
+#  - entry from tuck turn
+#  - entry from tuck turn w/ S-kick
+#- Charleston tandem corridors
+#  - entry from tandem
+#  - exit to open/1X-L
 
 # Syntax grammar
 # ==============
