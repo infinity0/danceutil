@@ -63,7 +63,7 @@
   - w/ inside spin: 8
     inherit
   - w/ bring in "yo-yo": 8
-    inherit
+    closed/1H-I, closed/2H -
 
 - Bring in: 6 subweight:0.5
   open/1H-O, open/1H-I, open/2H - closed/1H-I, closed/2H
@@ -125,6 +125,9 @@
     open/2X-L - closed/2T-B
   - from sweetheart/R: 6
     closed/2T-B - open/2X-R
+  - w/ S-turn into sweetheart: 6
+    # lead places follow RH onto own R shoulder
+    open/1H-O, open/1X-R - open/2T-F
 
 - Outside turn: 6
   open/1H-O, closed/2H -
@@ -159,8 +162,6 @@
     # a.k.a. horsey steps
     open/1H-O, open/1X-R, open/1X-L, open/1H-I, open/2H =
     open/1H-O, open/2H - closed/2H
-  - into sweetheart: 6
-    open/1H-O, open/1X-R - open/2T-F
 
 - Side pass, follow L: 6
   open/1H-O, open/1X-R -
@@ -279,6 +280,7 @@
 #
 #- Inside+outside turn+return
 #- Pop turn
+#- S-turn
 #- Barrel turn
 #- Sailor turn & kicks
 #
